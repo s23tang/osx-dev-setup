@@ -100,6 +100,17 @@ install_vim_solarized_theme() {
   fi
 }
 
+install_oh_my_tmux() {
+  cd
+  if [ -d .tmux ]; then
+    echo "oh-my-tmux - already installed"
+  else
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
+  fi
+}
+
 pre_install() {
   brew_tap_fonts
 }
@@ -113,6 +124,7 @@ install_all() {
   install_powerlevel9k
   install_pathogen
   install_vim_solarized_theme
+  install_oh_my_tmux
 }
 
 copy_dot_files() {
